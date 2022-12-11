@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/lamath/static/js/main.6ad0d880.js",
+    "main.js": "/lamath/static/js/main.cf4420bd.js",
     "static/js/787.9b50278d.chunk.js": "/lamath/static/js/787.9b50278d.chunk.js",
     "index.html": "/lamath/index.html",
-    "main.6ad0d880.js.map": "/lamath/static/js/main.6ad0d880.js.map",
+    "main.cf4420bd.js.map": "/lamath/static/js/main.cf4420bd.js.map",
     "787.9b50278d.chunk.js.map": "/lamath/static/js/787.9b50278d.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.6ad0d880.js"
+    "static/js/main.cf4420bd.js"
   ]
 }
