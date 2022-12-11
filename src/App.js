@@ -1,41 +1,24 @@
 import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Box } from '@chakra-ui/react';
+import CaesarCipher from './components/CaesarCipher';
+import Nav from './components/Nav';
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
+    <Box
+      bgImg="url('./cosmic-doodle-nz.jpg')"
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      h="100vh"
+    >
+      <Nav />
+      <HashRouter>
+        <Routes path="/">
+          <Route path="caesar_cipher" element={<CaesarCipher />} />
+        </Routes>
+      </HashRouter>
+    </Box>
   );
 }
 
