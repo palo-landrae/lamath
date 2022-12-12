@@ -1,31 +1,13 @@
-import {
-  Box,
-  Flex,
-  Text,
-  HStack,
-  Link,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Box, Flex, Text, HStack } from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
 
 const Links = [
   { id: 0, title: 'Home', path: '/' },
   { id: 1, title: 'Caesar Cipher', path: '/caesar_cipher' },
 ];
 
-const NavLink = props => (
-  <Link
-    px={2}
-    py={1}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    href={props.path}
-  >
-    {props.children}
-  </Link>
-);
+const NavLink = props => <Link to={props.path}>{props.children}</Link>;
 
 export default function Nav() {
   return (

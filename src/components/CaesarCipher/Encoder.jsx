@@ -16,27 +16,33 @@ import {
   NumberIncrementStepper,
   NumberInput,
   VStack,
+  Checkbox,
 } from '@chakra-ui/react';
 
 const Encoder = () => {
   const [plaintext, setPlaintext] = useState('');
   const [shift, setShift] = useState(1);
-  const [direction, setDirection] = useState('right');
   const [cypher, setCypher] = useState('');
+  const [isProgressive, setIsProgressive] = useState(false);
+  const [step, setStep] = useState(1);
 
   const submit = async e => {
     e.preventDefault();
-    const res = await fetch('http://localhost:5000/api/caesar_cipher/encrypt', {
-      method: 'POST',
-      body: JSON.stringify({
-        plaintext: plaintext,
-        shift: shift,
-        direction: direction,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const res = await fetch(
+      'https://lamath-flask-backend.vercel.app/api/caesar_cipher/encrypt',
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          plaintext: plaintext,
+          shift: shift,
+          isProgressive: isProgressive,
+          step: step,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     const result = await res.text();
     setCypher(result);
   };
@@ -68,24 +74,42 @@ const Encoder = () => {
               max={26}
               min={1}
               color="black"
+              size="sm"
             >
-              <NumberInputField bg="gray.200" />
+              <NumberInputField bg="gray.200" fontSize="md" />
               <NumberInputStepper>
                 <NumberIncrementStepper />
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
           </FormControl>
-          <RadioGroup value={direction} onChange={value => setDirection(value)}>
-            <HStack spacing="24px">
-              <Radio value="left" bg="gray.200">
-                Left
-              </Radio>
-              <Radio value="right" bg="gray.200">
-                Right
-              </Radio>
-            </HStack>
-          </RadioGroup>
+          <Checkbox
+            value={isProgressive}
+            onChange={v => setIsProgressive(v.target.checked)}
+          >
+            Progressive
+          </Checkbox>
+          {isProgressive && (
+            <FormControl my={2}>
+              <FormLabel htmlFor="step">
+                <Text fontSize="sm">Steps (Number)</Text>
+              </FormLabel>
+              <NumberInput
+                value={step}
+                onChange={v => setStep(v)}
+                id="step"
+                min={1}
+                color="black"
+                size="sm"
+              >
+                <NumberInputField bg="gray.200" fontSize="md" />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </FormControl>
+          )}
           <Button
             mt={4}
             w="md"

@@ -12,10 +12,10 @@ function App() {
       backgroundRepeat="no-repeat"
       h="100vh"
     >
-      <Nav />
       <HashRouter>
-        <Routes path="/">
-          <Route path="caesar_cipher" element={<CaesarCipher />} />
+        <Nav />
+        <Routes>
+          <Route path="/caesar_cipher" element={<CaesarCipher />} />
         </Routes>
       </HashRouter>
     </Box>

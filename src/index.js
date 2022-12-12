@@ -5,18 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
-import { extendTheme } from '@chakra-ui/react';
-
-const theme2 = extendTheme({
-  styles: {
-    global: props => ({
-      body: {
-        backgroundImage: 'url("./cosmic-doodle-nz.jpg")',
-      },
-    }),
-  },
-});
-
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
